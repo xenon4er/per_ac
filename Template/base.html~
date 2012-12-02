@@ -62,13 +62,14 @@ $(document).ready(function() {
 
 
 <BODY>
-<a href="#" class="sweet-tooltip" data-style-tooltip="tooltip-sweet-strong" data-text-tooltip="Я всплывающая подсказка">ссылка</a>
+
 
 <DIV class=main2> 
 <Div id = "head_grey">
 
 <DIV class=main>
-<DIV class=headNav><a href="#" onclick="return add_favorite(this);"><IMG height=22 alt=home src="/media/img/home.jpg" width=31 border=0></a>
+<DIV class=headNav><a href="#" onclick="return add_favorite(this);"><IMG height=22 alt=home 
+src="/media/img/home.jpg" width=31 border=0></a>
 
 <A href="mailto:kumaks09@yandex.ru"><IMG height=22 alt=mail src="/media/img/ico_mail.jpg" width=31 border=0></a></DIV>
 <DIV class=head><DIV class=footerMenu2>
