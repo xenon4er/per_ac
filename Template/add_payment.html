@@ -1,0 +1,68 @@
+ 
+{%extends "base.html"%}
+{%block content%}
+
+
+<form action="." method="POST">{% csrf_token %}
+        <table>
+        {{form}}
+        {%if errors%}
+        <ul>
+        	{% for er in errors%}
+        		<li>{{er}}</li>
+        	{%endfor%}      	
+        </ul>
+        {% endif %}
+        <tr>
+        	<td colspan="2">
+        		<br><input type="submit" value="Добавить"><br>
+        	</td>
+        </tr><br><br>
+        </table>
+
+      
+<br>
+<div id ="SimpleDiv">
+    <table width="100%" border="1" cellspacing="0" cellpadding="4" align = "left" >
+
+        
+       
+           <tr align="center" >
+            <td width="5%">
+            Дата </td>
+    
+            <td width = "5%">
+              Категория
+            </td>
+            <td width = "25%">
+
+           Причина
+            </td>
+            <td width="5%">
+            Сумма
+            </td>
+        </tr>  
+	 {% for o in tables%}
+          <td width="5%">
+            {{o.date}} </td>
+    
+            <td width = "5%">
+                {{o.FK_Category.Title}}
+            </td>
+            <td width = "25%">
+
+            {{o.Reason}}
+            </td>
+            <td width="5%">
+            {{o.Amount_of_payment}}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+</form>
+
+{%endblock%}
+

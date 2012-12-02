@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %} Personal accountable {% endblock %}
+
+{% block content %}
+{%user%}this must be menu
+{% endblock %}

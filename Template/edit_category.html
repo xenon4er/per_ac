@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} Редактирование категории {% endblock %}
+
+{% block content %}
+    <br><br>
+    
+        
+        
+     <form action="." method="POST">{% csrf_token %}
+        <table>
+        {{form}}
+        <tr>
+        	<td colspan="2">
+        		<br><input type="submit" value="Ok"><br>
+        	</td>
+        </tr>
+        </table>
+	{{form1}}
+    </form>
+
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Создать категорию платежа{% endblock %}
+{% block content %}
+    <h2>Новая категория платежа:<br></h2>
+    
+        
+        
+     <form action="." method="POST">{% csrf_token %}
+        
+        <table>
+        {{form}}
+        <tr>
+        	<td colspan="2">
+        		<br><input type="submit" value="Ok"><br><br>
+        	</td>
+        </tr>
+        </table>
+    </form>
+    
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Категории{% endblock %}
+{% block content %}
+    <h2>Вашb категории:<br></h2>        
+        <ul>
+        	{% for er in cat%}
+        		<li>{{er.Title}}</li>
+        	{%endfor%}      	
+        </ul>
+    
+
+{% endblock %}
+

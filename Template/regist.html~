@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Registr{% endblock %}
+{% block content %}
+    <h2>Registration<br></h2>
+    
+        
+        
+     <form action="." method="POST">{% csrf_token %}
+        
+        <table>
+        {{form}}
+        {%if errors%}
+        <ul>
+        	{% for er in errors%}
+        		<li>{{er}}</li>
+        	{%endfor%}      	
+        </ul>
+        {% endif %}
+        <tr>
+        	<td colspan="2">
+        		<br><input type="submit" value="Зарегистрироваться"><br><br>
+        	</td>
+        </tr>
+        </table>
+    </form>
+    
+
+{% endblock %}
+

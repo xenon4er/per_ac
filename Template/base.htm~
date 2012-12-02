@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE>I+MONEY</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<META http-equiv=Content-Type content="text/html; charset=windows-1251"><LINK 
+<link href="/media/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<META content="MSHTML 6.00.2900.2604" name=GENERATOR></HEAD>
+<script type="text/javascript" src="images/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="images/jquery.hoverIntent.minified.js"></script>
+<script type="text/javascript" src="images/jquery.dctooltip.1.0.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".trigger").click(function(){
+		$(".panel").toggle("fast");
+		$(this).toggleClass("active");
+		return false;
+	});
+});
+</script>
+
+<script type="text/JavaScript">
+$(document).ready(function() {
+	$('#demo-list li a').dcTooltip();
+	$('#demo-2').dcTooltip({
+    classWrapper: 'tooltip-2',
+	distance: 10
+    });
+});
+</script>
+
+
+<BODY>
+
+
+<DIV class=main2> 
+<Div id = "head_grey">
+
+<DIV class=main>
+<DIV class=headNav><a href="index.htm"><IMG height=22 alt=home 
+src="images/ico_home.gif" width=31 border=0></a>
+
+<A href="#"><IMG height=22 alt=mail src="images/ico_mail.gif" width=31 border=0></a></DIV>
+<DIV class=head><DIV class=footerMenu2>
+<DIV class=companyname>I + MONEY</DIV>
+</DIV>
+ </DIV>
+
+
+
+<DIV class=contentTop></DIV>
+<DIV class=quotes><STRONG>Something Else</STRONG></br>
+<br>
+<BR><div id = "img"></div>
+</DIV>
+<div class="panel">
+	<div class="text_panel">Мои сбережения:</div> <br> <h54> Кол-во денег на карте сбербанка: 54000<br> Количество зарегистрированных пользователей: {{count_user}}</h54>
+		<img_panel class="right" src="images/jon_image.jpg" alt="Jon Phillips" />
+<div style="clear:both;"></div>
+
+
+
+</div>
+<a class="trigger" href="#">Статистика</a>
+
+<DIV class=content><STRONG>Content Title<BR></STRONG>
+
+
+    <div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="../welcome/">I+Money</a></h1>
+		</div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="4">
+   </table>	
+   <table width="100%" border="0" cellspacing="0" cellpadding="4">
+   	<tr align="center" >
+   		<th width = "10%">{% block leftcontent %}
+   			
+   			{% endblock %}</th>
+   		
+   	
+   		<th width = "10%">{% block rightcontent %}
+	
+	
+				{% endblock %}</th> 
+					<div id = "number">
+                        {%if  not user.is_authenticated%}
+                        <a a href=../login/ accesskey="1" title="">Войти</a><br> 
+                        <a a href=../registr/ accesskey="1" title="">Зарегистрироваться</a>
+                        {%else%}
+                          {{user.username}}<br>
+                        <a a href=../edit_profile/ accesskey="1" title="">Редактировать</a><br>
+                        
+                        <a href=../logout/  accesskey="2" title="">Выход</a>
+					
+                        {%endif%}
+                    </div>
+					
+   	</tr>
+
+   </table>	
+
+Lorem ipsum dolor sit amet, 
+consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet 
+dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis nostrud 
+exerci tution ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo 
+consequat. Duis autem dolor in hendrerit in vulputate velit esse molestie 
+consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+commodo consequat. Duis te feugifacilisi. Lorem ipsum dolor sit amet, 
+consectetuer adipiscing elit, sed diem nonummy nibh euismod tincidunt ut lacreet 
+dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis nostrud 
+exerci tution ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo 
+consequat. Duis autem dolor in hendrerit in vulputate velit esse molestie 
+consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci tai
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+t, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan 
+et iusto odio dignissim qui blandit praesent luptatum zzril delenit au gue duis 
+dolore te feugat nulla facilisi. Ut wisi enim ad minim veniam, quis nostrud 
+exerci taion ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+on ullamcorper suscipit lobortis nisl ut aliquip ex en commodo 
+consequat. Duis te feugifacilisi per suscipit lobortis nisl ut aliquip ex en 
+c\. </DIV></DIV>
+<DIV class=footerMenu>
+ </DIV>
+		
+</body></HTML>
