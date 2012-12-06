@@ -62,7 +62,7 @@ def AddPayment(request):
     errors = []
     pay = Payment.objects.filter(FK_User = user)
     cat = Category.objects.filter(FK_User = user)
-    form = AddPaymentform(request.POST, user)
+    form = AddPaymentform(request.POST or None, user)
     context = { 'form': form, 'errors':errors, 'tables': pay, 'category':cat, 'count_user':count_user}
     
     
