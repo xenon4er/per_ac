@@ -60,8 +60,8 @@ def AddPayment(request):
     if not user.is_authenticated():
         return HttpResponseRedirect('/registr/')
     errors = []
-    pay = Payment.objects.all()
-    cat = Category.objects.all()
+    pay = Payment.objects.filter(FK_User = user)
+    cat = Category.objects.filter(FK_User = user)
     form = AddPaymentform(request.POST, user)
     context = { 'form': form, 'errors':errors, 'tables': pay, 'category':cat, 'count_user':count_user}
     
