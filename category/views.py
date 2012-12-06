@@ -18,13 +18,20 @@ from forms import *
 @csrf_protect
 def AddCat(request):
     user = request.user
+    count_user = User.objects.count()
+    my_savings = 0.0
     if not user.is_authenticated():
         return HttpResponseRedirect('/registr/')
     errors = []
-    count_user = User.objects.count()
+    
+    
+    u_pay = Payment.objects.filter(FK_User = user)
+    
+    for x in u_pay:
+       my_savings += x.Amount_of_payment
     
     form = CatAddform(request.POST or None)
-    context = { 'form': form,  'errors':errors, 'count_user':count_user}
+    context = { 'form': form,  'errors':errors, 'count_user': count_user ,  'my_savings' : my_savings}
     
     if request.method == 'POST' and form.is_valid():
         title = form.cleaned_data.get('title',  None)
@@ -37,10 +44,17 @@ def AddCat(request):
 def ViewCat(request):
     user = request.user
     count_user = User.objects.count()
+    my_savings = 0.0
     if not user.is_authenticated():
         return HttpResponseRedirect('/registr/')
+        
+    u_pay = Payment.objects.filter(FK_User = user)
+    for x in u_pay:
+       my_savings += x.Amount_of_payment
+    
+   
     catlist = Category.objects.filter(FK_User = request.user)
-    return render_to_response('category.html', {'cat':catlist, 'user':user, 'count_user':count_user})
+    return render_to_response('category.html', {'cat':catlist, 'user':user, 'count_user':count_user ,  'my_savings' : my_savings})
 
 def EditCat(request):
     user = request.user
@@ -50,20 +64,29 @@ def EditCat(request):
     errors = []
     form = CatEditform(user)
     form1 = CatAddform(request.POST)
-    context = { 'form': form,'form1':form1,   'errors':errors, 'count_user':count_user}
+    context = { 'form': form,'form1':form1,   'errors':errors, 'count_user':count_user ,  'my_savings' : my_savings}
 
     return direct_to_template(request, 'edit_category.html', context)
 @csrf_protect
 def AddPayment(request):
     count_user = User.objects.count()
     user = request.user
+    my_savings = 0.0
+    
     if not user.is_authenticated():
         return HttpResponseRedirect('/registr/')
+    u_pay = Payment.objects.filter(FK_User = user)
+    
+    
+    for x in u_pay:
+       my_savings += x.Amount_of_payment
+       
+    
     errors = []
     pay = Payment.objects.filter(FK_User = user)
     cat = Category.objects.filter(FK_User = user)
     form = AddPaymentform(request.POST or None, user)
-    context = { 'form': form, 'errors':errors, 'tables': pay, 'category':cat, 'count_user':count_user}
+    context = { 'form': form, 'errors':errors, 'tables': pay, 'category':cat, 'count_user':count_user,  'my_savings' : my_savings}
     
     
     if  request.method == 'POST' and form.is_valid():

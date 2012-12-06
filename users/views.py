@@ -15,13 +15,14 @@ from forms import *
 @csrf_protect
 def registr(request):
     count_user = User.objects.count()
+    my_savings = 0.0
     if request.user.is_authenticated():
         return HttpResponseRedirect('/welcome/')
   
     errors_registr = []
     
     form = RegAddform(request.POST or None)
-    context = { 'form': form,  'errors':errors_registr, 'count_user':count_user}
+    context = { 'form': form,  'errors':errors_registr, 'count_user':count_user,  'my_savings' : my_savings}
     if request.method == 'POST' and form.is_valid():
         username = form.cleaned_data.get('username', None)
         password = form.cleaned_data.get('password', None)
@@ -63,13 +64,18 @@ def logout(request):
 def edit_user_profile(request):
     user = request.user
     count_user = User.objects.count()
+    u_pay = Payment.objects.filter(FK_User = user)
+    my_savings = 0.0
+    for x in u_pay:
+       my_savings += x.Amount_of_payment
+       
     if not user.is_authenticated():
         return HttpResponseRedirect('/welcome/') 
     errors_login = []    
     data = {'firstname': user.first_name, 'lastname': user.last_name, 'email': user.email, 'password': user.password}    
     form = EditUserForm(request.POST or data)
     
-    context = { 'form': form,  'errors':errors_login, 'count_user':count_user}
+    context = { 'form': form,  'errors':errors_login, 'count_user':count_user,  'my_savings' : my_savings}
     if request.method == 'POST' and form.is_valid():
         firstname = form.cleaned_data.get('firstname', None)
         lastname = form.cleaned_data.get('lastname', None)
