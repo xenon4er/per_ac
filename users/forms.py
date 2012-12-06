@@ -23,8 +23,7 @@ class RegAddform(forms.Form):
         user.save()
         prof = UserProfile(user=user)
         prof.save()
-        category = Category(Title = 'New_cat',  periodicity = 0,  FK_User = user)
-        category.save()
+
         safe = Safe(Title = 'Test',  FK_User = user)
         safe.save()
         return user
