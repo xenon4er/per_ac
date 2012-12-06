@@ -3,6 +3,7 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from per_ac.users.models import *
+from per_ac.views import *
 
 from django.template import RequestContext
 from django.core.context_processors import csrf
@@ -12,10 +13,12 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic.simple import direct_to_template
 from forms import *
 
+
+
 @csrf_protect
 def registr(request):
     count_user = User.objects.count()
-    my_savings = 0.0
+    my_savings = GetMySavings(request.user);
     if request.user.is_authenticated():
         return HttpResponseRedirect('/welcome/')
   
@@ -64,13 +67,11 @@ def logout(request):
 def edit_user_profile(request):
     user = request.user
     count_user = User.objects.count()
-    u_pay = Payment.objects.filter(FK_User = user)
-    my_savings = 0.0
-    for x in u_pay:
-       my_savings += x.Amount_of_payment
-       
     if not user.is_authenticated():
         return HttpResponseRedirect('/welcome/') 
+    
+    my_savings = GetMySavings(user)
+    
     errors_login = []    
     data = {'firstname': user.first_name, 'lastname': user.last_name, 'email': user.email, 'password': user.password}    
     form = EditUserForm(request.POST or data)

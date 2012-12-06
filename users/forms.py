@@ -15,7 +15,7 @@ class LoginAddform(forms.Form):
 class RegAddform(forms.Form):
     username = forms.CharField( label = _(u'Имя пользователя'))
     password = forms.CharField( label = _(u'Пароль'),  widget = forms.PasswordInput)
-    email = forms.CharField( label = _(u'Email'))
+    email = forms.EmailField( label = _(u'Email'))
 
     def SaveUser(self, username, email, password):
         user = User.objects.create_user(username, email, password)
@@ -32,7 +32,7 @@ class RegAddform(forms.Form):
 class EditUserForm(forms.Form):
     firstname = forms.CharField( label = _(u'Имя'))
     lastname = forms.CharField( label = _(u'Фамилия'))
-    email = forms.CharField( label = _(u'Email'))
+    email = forms.EmailField( label = _(u'Email'))
     password = password = forms.CharField( label = _(u'Пароль'),  widget = forms.PasswordInput)
     def SaveChanges(self, user, firstname, lastname, email, password):
         #user = request.User
