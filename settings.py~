@@ -1,9 +1,9 @@
 # Django settings for per_ac project.
 import os.path
 
-AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+AUTH_PROFILE_MODULE = 'users.UserProfile'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

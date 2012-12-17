@@ -11,9 +11,3 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        u = User(1, "adadasd", "dadad")
-        #u = self.us.objects.filter(email = "dsdd")
-        self.cat = Category.objects.create(Title = "first",  periodicity =2,  FK_User = u)
-        self.assertEqual(self.cat.objects.filter(Title = "first").periodicity, 3)
