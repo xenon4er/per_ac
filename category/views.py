@@ -45,16 +45,28 @@ def ViewCat(request):
     catlist = Category.objects.filter(FK_User = request.user)
     return render_to_response('category.html', {'cat':catlist, 'user':user, 'count_user':count_user ,  'my_savings' : my_savings})
 
-def EditCat(request):
+def EditCat(request,  catname):
     user = request.user
     count_user = User.objects.count()
     my_savings = GetMySavings(user)
     if not user.is_authenticated():
         return HttpResponseRedirect('/registr/')
     errors = []
-    form = CatEditform(user)
-    form1 = CatAddform(request.POST)
-    context = { 'form': form,'form1':form1,   'errors':errors, 'count_user':count_user ,  'my_savings' : my_savings}
+    #catname = 'olo'
+    category = Category.objects.filter(FK_User = user, Title = catname)
+    
+    data = {'title': category[0].Title,  'periodicity': category[0].periodicity}
+    
+    form = CatEditform(request.POST or data)
+    #form1 = CatAddform(request.POST or None)
+    context = { 'form': form, 'errors':errors, 'count_user':count_user ,  'my_savings' : my_savings}
+    
+    if  request.method == 'POST' and form.is_valid():        
+        newtitle = form.cleaned_data.get('title', None)
+        newperiodicity = form.cleaned_data.get('periodicity', None) 
+        form.SaveChanges(catname, newtitle, newperiodicity, user)
+        return HttpResponseRedirect('/view_cat/')
+    
 
     return direct_to_template(request, 'edit_category.html', context)
 

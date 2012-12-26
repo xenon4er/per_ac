@@ -18,11 +18,18 @@ class CatAddform(forms.Form):
 
 #filter(FK_User = user)]
 class CatEditform(forms.Form):
-    category=forms.ModelChoiceField(queryset = Category.objects.none(), required=True)
-    def __init__(self, user, *args, **kwargs):
-        super(CatEditform, self).__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.filter(FK_User = user)
-        
+    title = forms.CharField(label = _(u'Название категории'))
+    periodicity = forms.IntegerField(label = _(u'Периодизация'))
+    
+    def SaveChanges(self, catname, newtitle, newperiodicity, user):
+        cat = Category.objects.filter(FK_User = user, Title = catname)
+        cat1 = cat[0]
+        print newtitle
+        cat1.Title = newtitle
+        cat1.periodicity = newperiodicity
+        print cat1.Title
+        cat1.save()
+
 class AddPaymentform(forms.Form):
     amount_of_payment = forms.FloatField(label = _(u'Сумма'))
     category=forms.ModelChoiceField(label = _(u'Категория'),queryset = Category.objects.none(), required=True)

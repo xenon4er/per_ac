@@ -4,7 +4,7 @@
     <h2>Ваши категории:<br></h2>        
         <ul>
         	{% for er in cat%}
-        		<li>{{er.Title}}</li>
+                    <li>{{er.Title}} <a href=/edit_cat/{{er.Title}}>             Edit</a> </li> 
         	{%endfor%}      	
         </ul>
     
