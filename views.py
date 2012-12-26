@@ -15,17 +15,24 @@ def GetMySavings(user):
             my_savings += x.Amount_of_payment
     return my_savings
 
-
+def GetLastJoined():
+    userlist = User.objects.order_by('-date_joined')
+    userlast = userlist[0]
+    return userlast
+    
+    
 def welcome(request):
     user = request.user
     count_user = User.objects.count()
     my_savings = GetMySavings(user)
-    return render_to_response('welcome.html',{'user':user, 'count_user':count_user, 'my_savings' : my_savings})
+    lastUserJoined = GetLastJoined()
+    return render_to_response('welcome.html',{'user':user,'lastuser':lastUserJoined, 'count_user':count_user, 'my_savings' : my_savings})
 
 def main_menu(request):
     user = request.user
     count_user = User.objects.count()
     my_savings = GetMySavings(user)
+    lastUserJoined = GetLastJoined()
     
     if user.is_authenticated():
         uname = user.username
@@ -36,5 +43,5 @@ def main_menu(request):
     else:
         uname = 'Anonim' 
         return HttpResponseRedirect('/login/')
-    return render_to_response('main.html',{'user':uname, 'balance':ubalance, 'count_user':count_user,  'my_savings' : my_savings})
+    return render_to_response('main.html',{'user':uname,'lastuser':lastUserJoined, 'balance':ubalance, 'count_user':count_user,  'my_savings' : my_savings})
 

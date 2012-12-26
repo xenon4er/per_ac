@@ -6,7 +6,6 @@ from per_ac.accounts_department.models import *
 from per_ac.views import *
 from django.template import RequestContext
 from django.core.context_processors import csrf
-
 from django.views.decorators.csrf import csrf_protect
 
 from django.views.generic.simple import direct_to_template
@@ -18,14 +17,16 @@ from forms import *
 @csrf_protect
 def AddCat(request):
     user = request.user
+    lastUserJoined = GetLastJoined()
     count_user = User.objects.count()
     my_savings = GetMySavings(user)
+    
     if not user.is_authenticated():
         return HttpResponseRedirect('/registr/')
     errors = []
     
     form = CatAddform(request.POST or None)
-    context = { 'form': form,  'errors':errors, 'count_user': count_user ,  'my_savings' : my_savings}
+    context = { 'form': form,  'errors':errors, 'count_user': count_user ,  'lastuser':lastUserJoined,'my_savings' : my_savings}
     
     if request.method == 'POST' and form.is_valid():
         title = form.cleaned_data.get('title',  None)
@@ -37,16 +38,18 @@ def AddCat(request):
 
 def ViewCat(request):
     user = request.user
+    lastUserJoined = GetLastJoined()
     count_user = User.objects.count()
     my_savings = GetMySavings(user)
     if not user.is_authenticated():
         return HttpResponseRedirect('/registr/')
     
     catlist = Category.objects.filter(FK_User = request.user)
-    return render_to_response('category.html', {'cat':catlist, 'user':user, 'count_user':count_user ,  'my_savings' : my_savings})
+    return render_to_response('category.html', {'cat':catlist, 'user':user, 'lastuser':lastUserJoined,'count_user':count_user ,  'my_savings' : my_savings})
 
 def EditCat(request,  catname):
     user = request.user
+    lastUserJoined = GetLastJoined()
     count_user = User.objects.count()
     my_savings = GetMySavings(user)
     if not user.is_authenticated():
@@ -59,7 +62,7 @@ def EditCat(request,  catname):
     
     form = CatEditform(request.POST or data)
     #form1 = CatAddform(request.POST or None)
-    context = { 'form': form, 'errors':errors, 'count_user':count_user ,  'my_savings' : my_savings}
+    context = { 'form': form, 'errors':errors, 'count_user':count_user ,  'lastuser':lastUserJoined,'my_savings' : my_savings}
     
     if  request.method == 'POST' and form.is_valid():        
         newtitle = form.cleaned_data.get('title', None)
@@ -74,6 +77,7 @@ def EditCat(request,  catname):
 def AddPayment(request):
     count_user = User.objects.count()
     user = request.user
+    lastUserJoined = GetLastJoined()
     my_savings = GetMySavings(user)
     
     if not user.is_authenticated():
@@ -83,7 +87,7 @@ def AddPayment(request):
     pay = Payment.objects.filter(FK_User = user)
     cat = Category.objects.filter(FK_User = user)
     form = AddPaymentform(request.POST or None, user)
-    context = { 'form': form, 'errors':errors, 'tables': pay, 'category':cat, 'count_user':count_user,  'my_savings' : my_savings}
+    context = { 'form': form, 'errors':errors, 'tables': pay, 'category':cat, 'count_user':count_user, 'lastuser':lastUserJoined, 'my_savings' : my_savings}
     
     if  request.method == 'POST' and form.is_valid():
         amount_of_payment = form.cleaned_data.get('amount_of_payment', None)

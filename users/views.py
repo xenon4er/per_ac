@@ -19,6 +19,7 @@ from forms import *
 def registr(request):
     count_user = User.objects.count()
     my_savings = GetMySavings(request.user);
+    lastUserJoined = GetLastJoined()
     if request.user.is_authenticated():
         return HttpResponseRedirect('/welcome/')
   
@@ -44,6 +45,7 @@ def login(request):
     count_user = User.objects.count()
     errors_login = []
     form = LoginAddform(request.POST or None)
+    lastUserJoined = GetLastJoined()
     context = { 'form': form,  'errors':errors_login, 'count_user':count_user}
 
     if request.method == 'POST' and form.is_valid():
@@ -66,6 +68,7 @@ def logout(request):
 @csrf_protect
 def edit_user_profile(request):
     user = request.user
+    lastUserJoined = GetLastJoined()
     count_user = User.objects.count()
     if not user.is_authenticated():
         return HttpResponseRedirect('/welcome/') 
