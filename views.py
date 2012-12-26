@@ -17,8 +17,14 @@ def GetMySavings(user):
 
 def GetLastJoined():
     userlist = User.objects.order_by('-date_joined')
-    userlast = userlist[0]
-    return userlast
+    lastUserJoined = []
+    i =0
+    for u in userlist:
+        lastUserJoined.append(u)
+        i = i+1
+        if i==5: break
+    print lastUserJoined
+    return lastUserJoined
     
     
 def welcome(request):

@@ -98,7 +98,11 @@ src="/media/img/home.jpg" width=31 border=0></a>
 <BR>
 </DIV>
 <div class="panel">
-	<div class="text_panel">Мои сбережения: {{my_savings}}</div> <br> <h54> Кол-во денег на карте сбербанка: {{lastuser.username}}<br> Количество зарегистрированных пользователей: {{count_user}}</h54>
+	<div class="text_panel">Мои сбережения: {{my_savings}}</div> <br> <h54> Last Joined: <br> 
+    {%for u in lastuser%}
+    <br>{{u.username}}
+    {%endfor%}
+    <br><br> Количество зарегистрированных пользователей: {{count_user}}</h54>
 		<img_panel class="right" src="images/jon_image.jpg" alt="Jon Phillips" />
 <div style="clear:both;"></div>
 
