@@ -2,7 +2,6 @@
 <HTML><HEAD><TITLE>I+MONEY</TITLE>
 <link rel="shortcut icon" href="/media/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/media/img/favicon.ico" type="image/x-icon">
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <META http-equiv=Content-Type content="text/html; charset=windows-1251"><LINK 
 <meta name="Robots" content="index,follow" />
@@ -67,8 +66,6 @@ $(document).ready(function() {
 
 
 <BODY>
-
-
 <DIV class=main2> 
 <Div id = "head_grey">
 
@@ -100,24 +97,32 @@ src="/media/img/home.jpg" width=31 border=0></a>
 <br>
 <BR>
 </DIV>
+
 <div class="panel">
-	<div class="text_panel">Мои сбережения: {{my_savings}}</div> <br> <h54> Last Joined: <br> 
-    {%for u in lastuser%}
+	<div class="text_panel">Мои сбережения: {{my_savings}}</div> <br> <h54> 
+    
+    Последний зарегистрированный пользователь:
+    <br>
+  {%for u in lastuser%}
     <br>{{u.username}}
     {%endfor%}
+
+    
     <br><br> Количество зарегистрированных пользователей: {{count_user}}</h54>
-		<img_panel class="right" src="images/jon_image.jpg" alt="Jon Phillips" />
 <div style="clear:both;"></div>
 
-
+<a href=http://www.nalog.ru/><div id = "nalog"> </div></a>
 
 </div>
-<a class="trigger" href="#">Статистика</a>
+<a class="trigger" href="#"></a>
+
+
 
 <DIV class=content><STRONG>Разделы:<BR></STRONG>
 <DIV id=jk>
 <div id = "img"></div>
 </DIV>
+
 
    	<div id="category">
 <ul class = "menu">
@@ -127,8 +132,9 @@ src="/media/img/home.jpg" width=31 border=0></a>
 				<li><a href="/add_payment/">Моя бухгалтерия</a><br></li>
 				<li><a href="#">История</a><br></li>
 </ul>
+
 </DIV>
- 
+
 
 
 <div id="menu">
@@ -140,8 +146,9 @@ src="/media/img/home.jpg" width=31 border=0></a>
 
 
 </DIV></DIV>
+
+
 <DIV class=footerMenu><div id="copy">©fcs 2012 </div>
  </DIV>
  </DIV>
-		
 </body></HTML>
