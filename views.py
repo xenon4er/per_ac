@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from per_ac.accounts_department.models import *
 from django.core.context_processors import csrf
-
+import datetime
 from django.views.decorators.csrf import csrf_protect
 
 def GetMySavings(user):
@@ -26,7 +26,18 @@ def GetLastJoined():
     print lastUserJoined
     return lastUserJoined
     
-    
+
+def q(request):
+    qs = User.objects.filter(is_active=True)
+    end = datetime.datetime.today()
+    start = end-datetime.timedelta(days=30)
+
+
+    data = QuerySetStats(qs, 'date_joined').time_series(start, end)
+    values = [t[1] for t in data]
+    captions = [t[0].day for t in data]
+    return render_to_response('welcome.html',{'values':values,'captions':captions})
+ 
 def welcome(request):
     user = request.user
     count_user = User.objects.count()
