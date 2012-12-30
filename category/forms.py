@@ -6,7 +6,7 @@ from django.utils.translation import ugettext as _
 
 from per_ac.accounts_department.models import *
 from django.contrib.auth.models import User
-
+from django.forms.extras.widgets import SelectDateWidget
 import datetime
 
 class CatAddform(forms.Form):
@@ -43,3 +43,18 @@ class AddPaymentform(forms.Form):
         date = datetime.date.today()
         payment = Payment(Amount_of_payment = pay, FK_User = user,  Reason = reason,  FK_Category = fk_category, Fk_Safe = fk_safe,  currency = currency,  date = date)
         payment.save()
+
+class Historyform(forms.Form):
+    years_choices = []
+    years_choices.append('1888')
+    #day = forms.DateField(forms.widget = SelectDateWidget(years = BIRTH_YEAR_CHOICES))
+    date_payments= forms.DateField(label = _(u'Выбрать дату'), widget=SelectDateWidget( years = years_choices))
+    def __init__(self, request, user,  *args,  **kwargs):
+        super(Historyform, self).__init__(request, *args,  **kwargs)
+        yearslist = []
+        yearslist.append(str(user.date_joined.year))
+        y = 1
+        while y <= (datetime.date.today().year - user.date_joined.year):
+            yearslist.append(str(user.date_joined.year + y))
+            y = y +1
+        self.fields['date_payments'].widget.years = yearslist

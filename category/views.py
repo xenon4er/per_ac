@@ -98,3 +98,18 @@ def AddPayment(request):
         payment = form.SavePay(user, amount_of_payment, reason, fk_category,fk_safe ,currency)
     return direct_to_template(request, 'add_payment.html', context)
 
+def History(request):
+    count_user = User.objects.count()
+    user = request.user
+    lastUserJoined = GetLastJoined()
+    my_savings = GetMySavings(user)
+    
+    if not user.is_authenticated():
+        return HttpResponseRedirect('/registr/')
+   
+    errors = []
+    pay = Payment.objects.filter(FK_User = user)
+    form = Historyform(request.POST or None,  user)
+    context = { 'form': form, 'errors':errors, 'tables': pay, 'count_user':count_user, 'lastuser':lastUserJoined, 'my_savings' : my_savings}
+    
+    return direct_to_template(request, 'add_payment.html', context)
