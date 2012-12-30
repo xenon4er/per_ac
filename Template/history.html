@@ -2,7 +2,7 @@
 {%extends "base.html"%}
 {%block content%}
 
-
+<br><br>
 <form action="." method="POST">{% csrf_token %}
         <table>
         {{form}}
@@ -15,7 +15,7 @@
         {% endif %}
         <tr>
         	<td colspan="2">
-        		<br><input type="submit" value="Добавить"><br>
+        		<br><input type="submit" value="Посмотреть"><br>
         	</td>
         </tr><br><br>
         </table>
@@ -54,7 +54,7 @@
             {{o.Reason}}
             </td>
             <td width="5%">
-           <a > {{o.Amount_of_payment}}</a>
+           <a> {{o.Amount_of_payment}}</a>
             </td>
         </tr>
         {% endfor %}

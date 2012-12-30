@@ -34,11 +34,12 @@ class AddPaymentform(forms.Form):
     amount_of_payment = forms.FloatField(label = _(u'Сумма'))
     category=forms.ModelChoiceField(label = _(u'Категория'),queryset = Category.objects.none(), required=True)
     safe=forms.ModelChoiceField(label = _(u'Где хранятся'),queryset = Safe.objects.none(), required=True)
+    reason = forms.CharField(label = _(u'Причина'))
     def __init__(self, request,  user, *args, **kwargs):
         super(AddPaymentform, self).__init__(request, *args, **kwargs)
         self.fields['category'].queryset = Category.objects.filter(FK_User = user)
         self.fields['safe'].queryset = Safe.objects.filter(FK_User = user)
-    reason = forms.CharField(label = _(u'Причина'))
+    
     def SavePay(self,  user,  pay,  reason, fk_category,  fk_safe, currency):
         date = datetime.date.today()
         payment = Payment(Amount_of_payment = pay, FK_User = user,  Reason = reason,  FK_Category = fk_category, Fk_Safe = fk_safe,  currency = currency,  date = date)
@@ -46,15 +47,22 @@ class AddPaymentform(forms.Form):
 
 class Historyform(forms.Form):
     years_choices = []
-    years_choices.append('1888')
-    #day = forms.DateField(forms.widget = SelectDateWidget(years = BIRTH_YEAR_CHOICES))
-    date_payments= forms.DateField(label = _(u'Выбрать дату'), widget=SelectDateWidget( years = years_choices))
+    month_choise = []
+    #month_choise .append([])
+    i =1
+    while i < 13 :
+        month_choise.append([i, i])
+        i = i +1
+   
+    months=forms.ChoiceField(label = _(u'Месяц'),choices = month_choise , required=True)
+    years=forms.ChoiceField(label = _(u'Год'),choices = years_choices, required=True)
     def __init__(self, request, user,  *args,  **kwargs):
         super(Historyform, self).__init__(request, *args,  **kwargs)
         yearslist = []
-        yearslist.append(str(user.date_joined.year))
+        #yearslist.append([])
+        yearslist.append([user.date_joined.year, user.date_joined.year])
         y = 1
         while y <= (datetime.date.today().year - user.date_joined.year):
-            yearslist.append(str(user.date_joined.year + y))
+            yearslist.append([user.date_joined.year + y, user.date_joined.year + y])
             y = y +1
-        self.fields['date_payments'].widget.years = yearslist
+        self.fields['years'].choices = yearslist
