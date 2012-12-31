@@ -28,18 +28,20 @@
         
        
            <tr align="center" >
-            <td width="5%">
-            Дата </td>
+            <td width="5%"><font color="#000000">Дата</font> 
+             </td>
     
             <td width = "5%">
-              Категория
+            <font color="#000000"> Категория</font> 
+             
             </td>
             <td width = "25%">
 
-           Причина
+          <font color="#000000">Причина</font> 
             </td>
             <td width="5%">
-            Сумма
+            <font color="#000000"> Сумма</font> 
+           
             </td>
         </tr>  
 	 {% for o in tables%}
@@ -53,8 +55,8 @@
 
             {{o.Reason}}
             </td>
-            <td width="5%">
-            {{o.Amount_of_payment}}
+            <td width="5%" >
+          <font color="#008000">{{o.Amount_of_payment}}</font> 
             </td>
         </tr>
         {% endfor %}
