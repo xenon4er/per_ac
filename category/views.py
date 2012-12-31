@@ -98,3 +98,28 @@ def AddPayment(request):
         payment = form.SavePay(user, amount_of_payment, reason, fk_category,fk_safe ,currency)
     return direct_to_template(request, 'add_payment.html', context)
 
+def History(request):
+    count_user = User.objects.count()
+    user = request.user
+    lastUserJoined = GetLastJoined()
+    my_savings = GetMySavings(user)
+    
+    if not user.is_authenticated():
+        return HttpResponseRedirect('/registr/')
+   
+    errors = []
+    pay = Payment.objects.filter(FK_User = user)
+    form = Historyform(request.POST or None,  user)
+    #context = { 'form': form, 'errors':errors, 'tables': pay, 'count_user':count_user, 'lastuser':lastUserJoined, 'my_savings' : my_savings}
+    if  request.method == 'POST' and form.is_valid():
+        months = int(form.cleaned_data.get('months',  None))
+        years = int(form.cleaned_data.get('years', None))
+        minday = datetime.date(years,  months ,  1)
+        if (months + 1 <=12):
+            maxday = datetime.date(years,  months + 1 ,  1)
+        else:
+            maxday = datetime.date(years+1,  1 ,  1)
+        pay = Payment.objects.filter(FK_User = user,  date__range = (minday, maxday))
+        
+    context = { 'form': form, 'errors':errors, 'tables': pay, 'count_user':count_user, 'lastuser':lastUserJoined, 'my_savings' : my_savings}
+    return direct_to_template(request, 'history.html', context)

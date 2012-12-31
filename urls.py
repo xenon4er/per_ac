@@ -4,6 +4,7 @@ from per_ac.users.views import *
 from per_ac.category.views import *
 from django.conf import settings
 
+
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -20,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^edit_cat/([^/]+)/$', EditCat),
     url(r'^add_payment/$', AddPayment),
     url(r'^edit_profile/$', edit_user_profile), 
+    url(r'^q/$', q), 
+    url(r'^history/$', History), 
 #    url(r'^q/$', contact),
     # Examples:
     # url(r'^$', 'per_ac.views.home', name='home'),

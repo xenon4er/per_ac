@@ -2,7 +2,7 @@
 {%extends "base.html"%}
 {%block content%}
 
-
+<br><br>
 <form action="." method="POST">{% csrf_token %}
         <table>
         {{form}}
@@ -15,7 +15,7 @@
         {% endif %}
         <tr>
         	<td colspan="2">
-        		<br><input type="submit" value="Добавить"><br>
+        		<br><input type="submit" value="Фильтровать"><br>
         	</td>
         </tr><br><br>
         </table>
@@ -28,20 +28,18 @@
         
        
            <tr align="center" >
-            <td width="5%"><font color="#000000">Дата</font> 
-             </td>
+            <td width="5%">
+            Дата </td>
     
             <td width = "5%">
-            <font color="#000000"> Категория</font> 
-             
+              Категория
             </td>
             <td width = "25%">
 
-          <font color="#000000">Причина</font> 
+           Причина
             </td>
             <td width="5%">
-            <font color="#000000"> Сумма</font> 
-           
+            Сумма
             </td>
         </tr>  
 	 {% for o in tables%}
@@ -55,13 +53,8 @@
 
             {{o.Reason}}
             </td>
-<<<<<<< HEAD
-            <td width="5%" >
-          <font color="#008000">{{o.Amount_of_payment}}</font> 
-=======
             <td width="5%">
-           <a > {{o.Amount_of_payment|floatformat:2}}</a>
->>>>>>> 2248b8acda5558f4f398f19a11d65ad2e0ac0a6e
+           <a> {{o.Amount_of_payment|floatformat:2}}</a>
             </td>
         </tr>
         {% endfor %}
