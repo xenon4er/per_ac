@@ -62,3 +62,10 @@ def main_menu(request):
         return HttpResponseRedirect('/login/')
     return render_to_response('main.html',{'user':uname,'lastuser':lastUserJoined, 'balance':ubalance, 'count_user':count_user,  'my_savings' : my_savings})
 
+def diagramma(request):
+    user = request.user
+    count_user = User.objects.count()
+    my_savings = GetMySavings(user)
+    lastUserJoined = GetLastJoined()
+    context = {'user':user,'lastuser':lastUserJoined, 'count_user':count_user, 'my_savings' : my_savings}
+    return render_to_response('diagramma.html',context)

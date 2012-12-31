@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^edit_profile/$', edit_user_profile), 
     url(r'^q/$', q), 
     url(r'^history/$', History), 
+    url(r'^dia/$', diagramma), 
 #    url(r'^q/$', contact),
     # Examples:
     # url(r'^$', 'per_ac.views.home', name='home'),

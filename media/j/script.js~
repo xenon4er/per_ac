@@ -1,0 +1,31 @@
+/* Author:
+
+*/
+
+$(function () {
+  tax_data = [
+       {"period": "2012 Q3",  "sorned": 66},
+       {"period": "2012 Q2",  "sorned": 29},
+       {"period": "2011 Q1",  "sorned": 18},
+       {"period": "2010 Q4",  "sorned": 6},
+       {"period": "2010 Q3",  "sorned": 7},
+       {"period": "2010 Q2", "sorned": 27},
+       {"period": "2010 Q1", "sorned": 6},
+       {"period": "2009 Q4",  "sorned": 76},
+       {"period": "2009 Q3", "sorned": 56},
+       {"period": "2009 Q2",  "sorned": 22},
+       {"period": "2009 Q1",  "sorned": 32},
+       {"period": "2008 Q4",  "sorned": 81},
+       {"period": "2008 Q4", "sorned": 81}
+  ];
+  new Morris.Line({
+    element: 'hero-graph',
+    data: tax_data,
+    xkey: 'period',
+    ykeys: ['sorned'],
+    labels: ['$']
+  });
+  $('.code-example').each(function (index, el) {
+    eval($(el).text());
+  });
+});
