@@ -54,8 +54,12 @@
             {{o.Reason}}
             </td>
             <td width="5%">
-           <a> {{o.Amount_of_payment|floatformat:2}}</a>
-            </td>
+            {%if  o.Amount_of_payment > 0 %}
+            <font color="#008000"> {{o.Amount_of_payment|floatformat:2}}</font>
+            {%else%}
+           <a> {{o.Amount_of_payment|floatformat:2}}</a> 
+            {%endif%}
+                       </td>
         </tr>
         {% endfor %}
 
